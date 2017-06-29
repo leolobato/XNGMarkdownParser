@@ -47,9 +47,9 @@ static fpos_t seekfn(void *handler, fpos_t offset, int whence) {
   fmem_t *mem = handler;
 
   switch (whence) {
-    case SEEK_SET: pos = offset; break;
-    case SEEK_CUR: pos = mem->pos + offset; break;
-    case SEEK_END: pos = mem->size + offset; break;
+    case SEEK_SET: pos = (size_t)offset; break;
+    case SEEK_CUR: pos = mem->pos + (size_t)offset; break;
+    case SEEK_END: pos = mem->size + (size_t)offset; break;
     default: return -1;
   }
 
